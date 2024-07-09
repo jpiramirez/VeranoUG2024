@@ -21,7 +21,6 @@ class Node:
     self.g = 0
     self.h = 0
     self.f = 0
-    self.s = 0 # Number of steps to this node
 
   def __lt__(self, other):
     return self.g < other.g
@@ -101,10 +100,10 @@ def a_star(mapO, starts, goals, radius, diagonals = True):
 
 
             ### Add robot trajetories as obstacles
-            con_pasos = current.s
-            
             for k in range(NoR):
-                if k == i or goal_added[k] == True or con_pasos<=distances[k]: 
+                ind = current.g
+
+                if k == i or goal_added[k] == True or ind<=distances[k]: 
                     continue
                 map_in = cv2.circle(map_in, (goals[k][1], goals[k][0]), diagonal, 1, -1)
                 goal_added[k] = True
@@ -113,14 +112,15 @@ def a_star(mapO, starts, goals, radius, diagonals = True):
             if len(paths) > 0:      
                 
                 for k in range(len(paths)):
+                    valor_mas_cercano = min(steps[k], key=lambda elemento: abs(elemento - current.g))
+                    ind = steps[k].index(valor_mas_cercano)
 
                     path = paths[k]
                     step = steps[k]
                     lenre = len(path)
 
-                    if con_pasos < lenre-1:
-                        ind1 = con_pasos
-                        map = cv2.circle(map, (path[ind1][1], path[ind1][0]), diagonal, 1, -1)
+                    if ind < lenre-1:
+                        map = cv2.circle(map, (path[ind][1], path[ind][0]), diagonal, 1, -1)
 
 
 
@@ -136,7 +136,6 @@ def a_star(mapO, starts, goals, radius, diagonals = True):
                             neighbor.g = current.g + add_cost
                             neighbor.h = heuristic(neighbor.position, goal)
                             neighbor.f = neighbor.g + neighbor.h
-                            neighbor.s = current.s + 1
                             heapq.heappush(open_set, neighbor)
                         else:
                             new_cost = current.g + add_cost
@@ -144,7 +143,6 @@ def a_star(mapO, starts, goals, radius, diagonals = True):
                             if not better:
                                 neighbor.g = current.g + add_cost
                                 neighbor.f = neighbor.g + neighbor.h
-                                neighbor.s = current.s + 1
                 
 
 
