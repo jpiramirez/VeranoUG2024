@@ -11,7 +11,7 @@ import sys
 import matplotlib.pyplot as plt
 import os
 from AlgoritmoMR import a_multiples_robots
-from Algoritmo import a_star
+from Algoritmo import a_star, path2cells
 import cv2
 import time
 ti = time.time()
@@ -152,15 +152,17 @@ def algorithm( random_seed, NoR, obstacles):
     tf = time.time() - ti
 
 
-    ###
-    """ for k in range(NoR):
+    for k in range(NoR):
         r, c = path2cells(patharr[k])
         #print(steps[k])
         map[r, c] = 2 + k
 
     plt.imshow(map)
-    plt.scatter(xx, yy, color='red')
-    plt.show() """
+    for k in range(NoR):
+        r, c = path2cells(patharr[k])
+        plt.scatter(c[0], r[0], color='red')
+        plt.scatter(c[-1], r[-1], color='green')
+    plt.show()
 
     distances = [s[-1] for s in steps]
 
@@ -175,8 +177,8 @@ def algorithm( random_seed, NoR, obstacles):
 
 if __name__ == '__main__':
     seed = 10
-    NoR = 7
-    datos, d_min = algorithm(seed, NoR)
+    NoR = 19
+    datos, d_min = algorithm(seed, NoR, False)
     
     print('Robot - Inicio - Meta - Distancia recorrida')
     for d in datos:

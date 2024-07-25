@@ -1,10 +1,19 @@
-# **Simulación de Navegación Multi-Robot en Cuadrícula de Ocupación con Control de Trayectoria**
+# **Simulación de Planificación y Navegación Simultánea Multi-Robot en Cuadrícula de Ocupación**
 
 ## Verano UG 2024
+### Universidad de Guanajuato
+### Departamento de Ingeniería Electrónica
+### Campus Irapuato-Salamanca
 
-### Asesor: Dr. Juan Pablo Ignacio Ramírez Paredes.
+## Participantes
 
+* Carlo Leonardo Alcocer Soriano
+* Jennifer González Ortega
+* Gael Alexei García Chaire
+* Francisco de Jesús Martínez González
+* José Emmanuel Rangel Rodríguez
 
+Asesor: Dr. Juan Pablo Ignacio Ramírez Paredes
 
 >Este proyecto presenta una simulación de navegación para múltiples robots en un entorno definido por una cuadrícula de ocupación. La simulación se centra en la generación de trayectorias suaves y la implementación de un controlador cinemático para el seguimiento de dichas trayectorias, con la capacidad de operar en entornos virtuales como CoppeliaSim.
 
