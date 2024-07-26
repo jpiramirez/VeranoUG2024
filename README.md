@@ -17,6 +17,16 @@ Asesor: Dr. Juan Pablo Ignacio Ramírez Paredes
 
 >Este proyecto presenta una simulación de navegación para múltiples robots en un entorno definido por una cuadrícula de ocupación. La simulación se centra en la generación de trayectorias suaves y la implementación de un controlador cinemático para el seguimiento de dichas trayectorias, con la capacidad de operar en entornos virtuales como CoppeliaSim.
 
+**Requisitos Técnicos**
+  *	*Lenguaje de Programación:* Python 3.12.3 (versión sugerida)
+  *	*Bibliotecas:* NumPy, SciPy, Matplotlib, OpenCV (cv2)
+  *	*Software:* CoppeliaSim 
+  *	*Módulos Personalizados:*
+      *	**astargridMultiple:** Implementación del algoritmo A* para planificación de rutas multi-robot.
+      *	**coppeliasim_zmqremoteapi_client:** Cliente para la comunicación con CoppeliaSim a través de ZeroMQ.
+
+
+
 ### Resumen Técnico
 El proyecto aborda el desafío de coordinar el movimiento de múltiples robots DDR en un espacio compartido, garantizando que cada robot alcance su objetivo individual sin colisionar con otros robots o con obstáculos en el entorno. Para lograrlo, se utiliza una combinación de técnicas de planificación de rutas y control de movimiento:
   1.	**Planificación Global:** El algoritmo A* se emplea para determinar la ruta óptima para cada robot en la cuadrícula de ocupación, considerando tanto la distancia a la meta como los obstáculos presentes.
@@ -61,13 +71,6 @@ El proyecto aborda el desafío de coordinar el movimiento de múltiples robots D
   cell_size = 0.1 #meters
   ~~~
   
-**Requisitos Técnicos**
-  *	*Lenguaje de Programación:* Python 3.12.3 (versión sugerida)
-  *	*Bibliotecas:* NumPy, SciPy, Matplotlib, OpenCV (cv2)
-  *	*Software:* CoppeliaSim 
-  *	*Módulos Personalizados:*
-      *	**astargridMultiple:** Implementación del algoritmo A* para planificación de rutas multi-robot.
-      *	**coppeliasim_zmqremoteapi_client:** Cliente para la comunicación con CoppeliaSim a través de ZeroMQ.
   
 **Códigos de interés:**
   *	**pruebasAstargridMultiple.py:** Código para probar algoritmos, y determinar la menor distancia alcanzada entre dos robots durante la ejecución a velocidad constante.
